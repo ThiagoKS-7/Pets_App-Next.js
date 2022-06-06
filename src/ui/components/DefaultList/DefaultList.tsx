@@ -10,9 +10,9 @@ import {
 
 //import {Pet} from '../../'
 
-interface DefaultListProps{
-    pets: Pet[];
-}
+// interface DefaultListProps{
+//     pets: Pet[];
+// }
 
 export default function DefaultList() {
     return (
