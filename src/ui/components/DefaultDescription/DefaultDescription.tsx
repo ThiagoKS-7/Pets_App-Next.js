@@ -4,6 +4,8 @@ import {
     StyledSubTitle,
 } from "./DefaultDescription.style"
 
+
+/*QUANDO FOR CRIAR ALGUMA PROP, AO INVÉS DE USAR ANY, CRIAR UMA INTERFACE ESPECIFICANDO O TIPO DE CADA COISA*/
 interface MainDescriptionProps {
     titulo: string;
     subtitulo?: string | JSX.Element; 
