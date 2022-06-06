@@ -9,5 +9,14 @@ export const DefaultHeader  = styled('header')`
 `;
 
 export const Logo = styled('img')`
-    width:230px;
+    width: 29%;
+    height: 29%;
+     /* @media only screen and (min-width : 5201px)
+    { width: 2.7rem;}
+
+    @media only screen and (min-width : 3550px) and (max-width : 5200px)
+    { width: 2.3rem; }
+
+    @media only screen and (min-width : 2650px) and (max-width : 3549px)
+    { width: 1.4rem; } */
 `;

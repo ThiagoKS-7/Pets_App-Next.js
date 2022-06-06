@@ -2,6 +2,7 @@ import {createTheme} from "@mui/material"
 
 
 /*CRIAÇÃO DA VARIÁVEL PADRÃO DE TEMA DO APP*/
+
  const tema = createTheme(
     {
         palette: {

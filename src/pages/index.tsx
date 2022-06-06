@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import MainDescription from '../ui/components/DefaultDescription/DefaultDescription'
+import DefaultList from '../ui/components/DefaultList/DefaultList'
 
 /* ATOMS */
 
@@ -12,7 +13,13 @@ function Container(props:any) {
 const Home: NextPage = () => {
   return (
     <Container>
-      <MainDescription titulo="Teste titulo" subtitulo="Teste subtitulo"/>
+      <MainDescription titulo="" subtitulo={
+        <span>
+          Com um pequeno valor mensal, você<br/>
+          pode <strong>adotar um pet virtualmente.</strong>
+        </span>
+      }/>
+      <DefaultList/>
     </Container>
   )
 }
