@@ -13,6 +13,7 @@ import {TextService} from '../../../data/services/TextService'
 
 interface DefaultListProps{
     pets: Pet[];
+    onClick: (pet:Pet) => void;
 }
 
 export default function DefaultList(props:DefaultListProps) {
@@ -27,7 +28,7 @@ export default function DefaultList(props:DefaultListProps) {
                             <StyledDescription>
                               {TextService.truncateText(pet.historia, tamanhoMaximoTexto)}
                             </StyledDescription>
-                            <StyledButton variant="contained">Adotar {pet.nome}</StyledButton>
+                            <StyledButton onClick={props.onClick} variant="contained">Adotar {pet.nome}</StyledButton>
                         </StyledInfo>
                     </StyledListItem>
                 ))}
