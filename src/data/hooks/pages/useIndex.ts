@@ -1,38 +1,63 @@
-import {useState} from 'react';
+import { AxiosError } from 'axios';
+import { responseSymbol } from 'next/dist/server/web/spec-compliant/fetch-event';
+import {useState, useEffect} from 'react';
 import {Pet} from '../../@types/Pet'
+import {ApiService } from '../../services/ApiService'
 
 export function useIndex() {
-    const [petsList, setPetsList] = useState(
-        [
-            {
-              id: 1,
-              nome: "Bidu",
-              historia: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce orci lacus, scelerisque id tincidunt in, hendrerit in tortor.Morbi in odio vel urna varius feugiat.Integer orci tortor, placerat lobortis scelerisque a, accumsan sit amet ligula. Nunc lacinia posuere porttitor. Praesent fringilla libero vitae nulla dignissim vehicula.",
-              foto:"https://st2.depositphotos.com/2166845/5890/i/450/depositphotos_58906929-stock-photo-cairn-terrier-puppy.jpg",
-    
-            },
-            {
-              id: 2,
-              nome: "Aggy",
-              historia: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce orci lacus, scelerisque id tincidunt in, hendrerit in tortor.Morbi in odio vel urna varius feugiat.Integer orci tortor, placerat lobortis scelerisque a, accumsan sit amet ligula. Nunc lacinia posuere porttitor. Praesent fringilla libero vitae nulla dignissim vehicula.",
-              foto:"https://st3.depositphotos.com/11328482/34011/i/450/depositphotos_340118510-stock-photo-woman-holds-a-dog-on.jpg",
-    
-            },
-            {
-              id: 3,
-              nome: "Baloo",
-              historia: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce orci lacus, scelerisque id tincidunt in, hendrerit in tortor.Morbi in odio vel urna varius feugiat.Integer orci tortor, placerat lobortis scelerisque a, accumsan sit amet ligula. Nunc lacinia posuere porttitor. Praesent fringilla libero vitae nulla dignissim vehicula.",
-              foto:"https://st2.depositphotos.com/2222024/5609/i/450/depositphotos_56093859-stock-photo-happy-little-orange-havanese-puppy.jpg",
-    
-            }
-        ]
-    );
-    const [snack, setSnack] = useState(false);
-    const [message, setMessage] = useState('');
-    const [selectedPet, setSelectedPet] = useState<Pet | null>(null);
-    const [email, setEmail] = useState('');
-    const [value, setValue] = useState('');
+    const [petsList, setPetsList] = useState<Pet[]>([]),
+        [snack, setSnack] = useState(false),
+        [selectedPet, setSelectedPet] = useState<Pet | null>(null),
+        [message, setMessage] = useState(''),
+        [email, setEmail] = useState(''),
+        [value, setValue] = useState('');
 
+    /*TUDO QUE FOR ATUALIZADO ELE RODA DNV (se tiver algo no [] funciona como watch, se não tiver funfa como mounted)*/
+    useEffect(() => {
+        ApiService.get('/pets/')
+            .then((response:any) => {
+                setPetsList(response.data);
+            });
+    }, [])
+        
+    /* CONTROLA O FLUXO DE SALVAR OS DADOS DO MODAL */
+    function adopt() {
+        if (selectedPet !== null) {
+            if(hasValidData()) {
+                ApiService.post('/adocoes/cadastro/', {
+                    pet_id:selectedPet.id,
+                    email,
+                    valor: value,
+                })
+                    .then(() => {
+                        setSelectedPet(null);
+                        setMessage("Salvo com sucesso!");
+                        clearForm();
+                    })
+                    .catch((error: AxiosError) => {
+                        setMessage(error.response?.data.message);
+                    })              
+            } else {
+                setMessage("Erro! Todos os campos devem ser preenchidos.");
+            }
+                setSnack(true);
+                setTimeout(() => {
+                setSnack(false);
+                setSelectedPet(null);
+                }, 1600);
+        }
+    }
+
+    function hasValidData() {
+        return email.length > 0 && value.length > 0; 
+    }
+
+    function clearForm() {
+        setEmail('');
+        setValue('');
+    }
+
+        
     return {
         petsList,
         snack,
@@ -43,7 +68,6 @@ export function useIndex() {
         setValue,
         selectedPet,
         setSelectedPet,
-        setMessage,
-        setSnack,
+        adopt,
     }
 }

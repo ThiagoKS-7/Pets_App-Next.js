@@ -22,24 +22,8 @@ const Home: NextPage = () => {
     setEmail,
     setValue,
     setSelectedPet,
-    setMessage,
-    setSnack,
+    adopt,
   } = useIndex();
-
-  /* CONTROLA O FLUXO DE SALVAR OS DADOS DO MODAL */
-  function validateForm() {
-    console.log(email, value);
-    if(email.length > 0 && value.length > 0) {              
-      setMessage("Salvo com sucesso!");
-    } else {
-      setMessage("Erro! Todos os campos devem ser preenchidos.");
-    }
-    setSnack(true);
-    setTimeout(() => {
-      setSnack(false);
-      setSelectedPet(null);
-    }, 1600);
-  }
 
   return (
     <Container>
@@ -62,7 +46,7 @@ const Home: NextPage = () => {
         onCancel={() => setSelectedPet(null)}
         onClose={()=>setSelectedPet(null)}
         confirm={'Confirmar adoção'}
-        onConfirm={() => validateForm()}
+        onConfirm={() => adopt()}
       />
       <Snackbar open={snack} message={message}/>
     </Container>
