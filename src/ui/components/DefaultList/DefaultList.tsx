@@ -13,7 +13,7 @@ import {TextService} from '../../../data/services/TextService'
 
 interface DefaultListProps{
     pets: Pet[];
-    onClick: (pet:Pet) => void;
+    onClick: (pet: Pet | any) => void;
 }
 
 export default function DefaultList(props:DefaultListProps) {
