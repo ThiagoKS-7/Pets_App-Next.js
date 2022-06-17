@@ -9,8 +9,7 @@ export const DefaultHeader  = styled('header')`
 `;
 
 export const Logo = styled('img')`
-    width: 29%;
-    height: 29%;
+   width:40%
      /* @media only screen and (min-width : 5201px)
     { width: 2.7rem;}
 

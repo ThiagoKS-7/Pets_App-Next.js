@@ -18,7 +18,7 @@ export const StyledSubTitle = styled('span') `
     font-weight: normal;
     color: ${({theme}) => theme.palette.text.secondary};
     
-    @media only screen and (min-width : 3976px) and (max-width : 6000px)
+    @media only screen and (min-width : 3976px) and (max-width : 9000px)
     { 
         font-size: 4.3rem;
         margin-bottom: ${({theme}) => theme.spacing(10)};

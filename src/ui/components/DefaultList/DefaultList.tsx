@@ -1,6 +1,5 @@
 import {
     StyledList,
-    StyledButton,
     StyledListItem,
     StyledImg,
     StyledInfo,
@@ -10,6 +9,7 @@ import {
 
 import {Pet} from '../../../data/@types/Pet'
 import {TextService} from '../../../data/services/TextService'
+import DefaultButton from '../DefaultButton/DefaultButton';
 
 interface DefaultListProps{
     pets: Pet[];
@@ -28,7 +28,7 @@ export default function DefaultList(props:DefaultListProps) {
                             <StyledDescription>
                               {TextService.truncateText(pet.historia, tamanhoMaximoTexto)}
                             </StyledDescription>
-                            <StyledButton onClick={props.onClick} variant="contained">Adotar {pet.nome}</StyledButton>
+                            <DefaultButton onClick={props.onClick} variant="contained">Adotar {pet.nome}</DefaultButton>
                         </StyledInfo>
                     </StyledListItem>
                 ))}
