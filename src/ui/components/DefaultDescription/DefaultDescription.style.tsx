@@ -3,7 +3,9 @@ import { styled } from "@mui/system";
 export const Container = styled('div')`
     display: flex;
     flex-direction: column;
-    align-items:center
+    align-items:center;
+    text-align: center;
+    justify-content: center;
 `;
 
 
