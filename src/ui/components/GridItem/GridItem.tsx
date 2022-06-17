@@ -4,7 +4,8 @@ interface DefaultGridProps{
     type:string,
     value:string,
     onChange: (e:any) => void,
-    children:any
+    children:any,
+    placeholder?:string;
 }
 
 function GridItem(props:DefaultGridProps) {
@@ -13,6 +14,7 @@ function GridItem(props:DefaultGridProps) {
             <TextField 
                 type={props.type}
                 value={props.value}
+                placeholder={props.placeholder}
                 onChange={props.onChange}
                 label={props.children}
                 fullWidth
