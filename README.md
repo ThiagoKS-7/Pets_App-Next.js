@@ -1,4 +1,4 @@
-#Adote um pet
+# Adote um pet
 
 "Adote um pet" is a fictitious platform, written in Next.js, whose function would be to publicize "virtual" pets that would be up for adoption, via web.
 
