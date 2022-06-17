@@ -1,3 +1,16 @@
+#Adote um pet
+
+"Adote um pet" is a fictitious platform, written in Next.js, whose function would be to publicize "virtual" pets that would be up for adoption, via web.
+
+<div style="display:flex">
+  <img heigth="400em" width="300em" src="https://user-images.githubusercontent.com/83460816/174403149-8444c5f4-2afd-42d9-a237-437c637265e6.png">
+  <img heigth="400em" width="300em" src="https://user-images.githubusercontent.com/83460816/174403216-7f7e8042-aaea-4886-b9a0-30c3364621f3.png">
+  <img heigth="400em" width="300em" src="https://user-images.githubusercontent.com/83460816/174403792-56950e4e-3d81-4ed0-95ec-a47fcedfca0e.png">
+
+<div>
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
