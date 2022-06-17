@@ -1,4 +1,5 @@
-import { Dialog, Grid, TextField, DialogActions, Button } from '@mui/material'
+import { Dialog,DialogActions, Button, Grid } from '@mui/material'
+import GridItem from '../GridItem/GridItem';
 
 interface DefaultModalProps{
     firstField: string;
@@ -15,20 +16,6 @@ interface DefaultModalProps{
     onCancel: () => void;
 }
 
-/* ATOMS */
-function GridItem(props:any) {
-    return (
-        <Grid item xs={12}>
-            <TextField 
-                type={props.type}
-                value={props.value}
-                onChange={props.onChange}
-                label={props.children}
-                fullWidth
-            />
-        </Grid>
-    )
-}
 
 /* MOLECULES */
 function ModalBody(props: any) {

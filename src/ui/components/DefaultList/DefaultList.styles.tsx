@@ -1,4 +1,4 @@
-import { styled,Button } from "@mui/material";
+import { styled } from "@mui/material";
 export const StyledContainer = styled('div')`
 
 `;
@@ -7,16 +7,31 @@ export const StyledList = styled('ul')`
     display:flex;
     flex-direction:column; 
     width:100%;
+    max-height: 100%;
+    overflow: auto;
     margin: 0 auto;
     padding-bottom: ${({theme}) => theme.spacing(3)};
 `;
 
 export const StyledListItem = styled('li')`
-    list-style-type: none;
-    display:grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: ${({theme}) => theme.spacing(5)};
-    margin-bottom: ${({theme}) => theme.spacing(5)};
+    @media (min-width: 10px) {
+        list-style-type: none;
+        justify-content:center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: ${({theme}) => theme.spacing(5)};
+        margin-bottom: ${({theme}) => theme.spacing(5)};
+      }
+
+      @media (min-width: 810px) {
+        list-style-type: none;
+        display:grid;
+        flex-wrap: wrap;
+        grid-template-columns: repeat(2,2fr);
+        gap: ${({theme}) => theme.spacing(5)};
+        margin-bottom: ${({theme}) => theme.spacing(5)};
+      }
+   
 
     ${({theme}) => theme.breakpoints.down('md')} {
         grid-template-columns: 1f;
@@ -27,13 +42,22 @@ export const StyledListItem = styled('li')`
 `;
 
 export const StyledImg = styled('img')`
-    display: flex;
-    flex-direction: column;
-    gap: ${({ theme }) => theme.spacing(2) };
-    align-self:center;
-    margin-left:1%;
-    min-width:422px;
-    width:84%;
+    @media(min-width: 10px) {
+        align-self:center;
+        margin-right:10%;
+        min-width:422px;
+        width:94%;
+    }
+    @media (min-width: 810px) {
+        display: flex;
+        flex-direction: column;
+        gap: ${({ theme }) => theme.spacing(2) };
+        align-self:center;
+        margin-left:1%;
+        min-width:422px;
+        width:84%;
+    }
+
 `;
 
 export const StyledInfo = styled('div')`
@@ -44,7 +68,7 @@ export const StyledInfo = styled('div')`
 
 export const StyledName = styled('h1')`
     margin:0px;
-    @media only screen and (min-width : 4001px)  and (max-width : 6000px)
+    @media only screen and (min-width : 4001px)  and (max-width : 9000px)
     { font-size: 7.3rem;}
     @media only screen and (min-width : 3501px)  and (max-width : 4000px)
     { font-size: 5.3rem;}
@@ -68,7 +92,6 @@ export const StyledDescription = styled('p')`
     padding-right: 9%;
     text-align: justify;
     word-break: break-word;
-
     @media only screen and (min-width : 3976px) 
     { 
         font-size: 4.3rem;
@@ -103,19 +126,4 @@ export const StyledDescription = styled('p')`
         font-size: 1.4rem;
         margin: 0 0 25px 0; 
     }
-`;
-
-export const StyledButton = styled(Button)`
-    font-size: 1rem;
-    margin-right:9%;
-    @media only screen and (min-width : 3976px)
-    { font-size: 4rem;}
-    @media only screen and (min-width : 3501px) and (max-width : 3975px)
-    { font-size: 3rem;}
-
-    @media only screen and (min-width : 2501px) and (max-width : 3500px)
-    { font-size: 1.8rem;}
-
-    @media only screen and (min-width : 1550px) and (max-width : 2500px)
-    { font-size: 1.2rem; }
 `;
